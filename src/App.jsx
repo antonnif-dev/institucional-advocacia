@@ -9,14 +9,21 @@ import {
 import ServiceCard from "./components/ServiceCard";
 import DepositionsCard from "./components/DepositionsCard";
 import Button from '@mui/material/Button';
+import { motion } from "framer-motion";
+
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+></motion.div>
 
 const services = [
-  { title: "Direito Civil", description: "Identificamos ilegalidades..." },
-  { title: "Direito Pena", description: "Atuação urgente..." },
+  { title: "Direito Civil", description: "Identificamos ilegalidades de maneira..." },
+  { title: "Direito Penal", description: "Atuação urgente..." },
   { title: "Direito Tributário", description: "Atendimento completo..." },
-  { title: "Direito Civil", description: "Identificamos ilegalidades..." },
-  { title: "Direito Pena", description: "Atuação urgente..." },
-  { title: "Direito Tributário", description: "Atendimento completo..." },
+  { title: "Direito Trabalhista", description: "Identificamos ilegalidades de maneira..." },
+  { title: "Direito Empresarial", description: "Atuação urgente..." },
+  { title: "Direito do Consumidor", description: "Atendimento completo..." },
 ]
 
 const depositions = [
@@ -43,50 +50,94 @@ function App() {
 
   return (
     <>
-      <div className='p-5 bg-[#420a0a] space-y-10 border-2 border-black'>
+      <div className='p-4 bg-[#420a0a] space-y-10 border-2 border-black'>
         {/* Navbar */}
         <section className='flex justify-between p-2 mb-15'>
           <div className='flex flex-col items-center'>
-            <img className='w-16 md:w-28' src="../saas-juridico2.png" alt="" />
+              <motion.img
+                src="../saas-juridico2.png"
+                className="w-16 md:w-28"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.4 }}
+              />
             <p>Brandão Guedes</p>
           </div>
-          <div className='flex text-md md:text-3xl text-black font-bold gap-2 mt-8 md:mt-20'>
-            <a href="">Serviços</a>
-            <a href="">Sobre</a>
-            <a href="">Contato</a>
+          <div className='flex text-lg md:text-3xl text-black font-bold gap-2 md:gap-5 mt-8 md:mt-20'>
+            <motion.a
+              href="#servicos"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Serviços
+            </motion.a>
+
+            <motion.a
+              href="#equipe"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Equipe
+            </motion.a>
+
+            <motion.a
+              href="#contato"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contato
+            </motion.a>
           </div>
         </section>
 
         {/* Apresentação */}
-        <section className='flex justify-center mb-15 gap-5 md:gap-25'>
+        <section className='flex justify-center items-center px-5 mb-15 gap-5 md:gap-25'>
           <div className='flex flex-col space-y-5 flex-1'>
             <div>
               <h2>Precisa de um escritório que cuida do seu caso?</h2>
-              <p>Com nosso escritório você terá ...</p>
+              <p className="text-gray-300">
+                Especialistas em Direito Penal e Civil, com atuação rápida e personalizada para proteger seus direitos.
+              </p>
             </div>
             <div className='flex justify-center gap-2'>
               <Button size="small" className='w-22 md:w-32' href={whatsappUrl} variant="contained" color="success">Enviar mensagem</Button>
               <Button size="small" className='w-22 md:w-32' href={phoneUrl} variant="contained" color="primary">Ligue agora</Button>
             </div>
           </div>
-          <div className='flex-[1.2]'>
-            <img className='w-xs' src="../advogada-perfil.jpg" alt="" />
+
+          <div className='flex-[1.2] flex items-center'>
+            <div className="overflow-hidden rounded-xl">
+              <motion.img
+                src="../advogada-perfil.jpg"
+                className="w-xs h-65"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.4 }}
+              />
+            </div>            
           </div>
+
         </section>
 
         {/* Serviços */}
-        <section className='space-y-5'>
+        <section id="servicos" className='space-y-5'>
           <div className='flex justify-center flex-col'>
             <h2>Nossos serviços</h2>
             <p>Atuação nas áreas...</p>
           </div>
-          <section className="grid grid-cols-3 md:grid-cols-6 gap-6">
+          <section className="grid grid-cols-3 md:grid-cols-6 gap-3">
             {services.map((service, index) => (
-              <ServiceCard
+              <motion.div
                 key={index}
-                title={service.title}
-                description={service.description}
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                viewport={{ amount: 0.3 }}
+              >
+                <ServiceCard
+                  key={index}
+                  title={service.title}
+                  description={service.description}
+                />
+              </motion.div>
             ))}
           </section>
         </section>
@@ -120,9 +171,15 @@ function App() {
         </section>
 
         {/* Advogados */}
-        <section className='space-y-5 relative'>
-          <div className='flex justify-start'>
-            <img className='w-[150px] md:w-[350px]' src="../advogado.jpg" alt="" />
+        <section id="equipe" className='space-y-5'>
+
+          <div className='flex justify-around gap-2'>
+            <motion.img
+                src="../advogado.jpg"
+                className="w-[150px] md:w-[350px]"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.4 }}
+              />
             <div className='flex flex-col items-center gap-5'>
               <h2>Doutor Fulano...</h2>
               <h4>Começou no direito no ano de ...</h4>
@@ -130,13 +187,18 @@ function App() {
             </div>
           </div>
 
-          <div className='flex justify-end'>
+          <div className='flex justify-around gap-2'>
             <div className='flex flex-col items-center gap-5'>
-              <h2>Doutor Siclano...</h2>
+              <h2>Doutora Siclano...</h2>
               <h4>Começou no direito no ano de ...</h4>
               <Button size="medium" className='w-22 md:w-32' href={whatsappUrl} variant="contained" color="success">Whatsapp</Button>
             </div>
-            <img className='w-[150px] md:w-[350px]' src="../advogada.jpg" alt="" />
+            <motion.img
+                src="../advogada.jpg"
+                className="w-[150px] md:w-[350px]"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.4 }}
+              />
           </div>
         </section>
 
@@ -145,12 +207,19 @@ function App() {
           <h2>O que dizem nossos clientes</h2>
           <section className="flex gap-2 justify-center">
             {depositions.map((service, index) => (
-              <DepositionsCard
+              <motion.div
                 key={index}
-                image={service.image}
-                title={service.title}
-                description={service.description}
-              />
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <DepositionsCard
+                  key={index}
+                  image={service.image}
+                  title={service.title}
+                  description={service.description}
+                />
+              </motion.div>
             ))}
           </section>
 
@@ -161,7 +230,7 @@ function App() {
 
         {/* Footer */}
         <section>
-          <footer className="">
+          <footer id="contato" className="">
             <div className="px-2 gap-10 space-y-5">
               <div>
                 <h2 className="font-semibold">Entre em contato</h2>
