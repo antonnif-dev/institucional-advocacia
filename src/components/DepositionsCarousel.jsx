@@ -5,37 +5,27 @@ import Button from "@mui/material/Button";
 
 export default function DepositionsCarousel({ items }) {
     const [index, setIndex] = useState(0);
-    const [itemsPerView, setItemsPerView] = useState(3);
+    const itemsPerView = 3;
 
-    // RESPONSIVO
-    useEffect(() => {
-        const handleResize = () => {
-            setItemsPerView(window.innerWidth < 768 ? 1 : 3);
-        };
-
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    // AUTOPLAY
     useEffect(() => {
         const interval = setInterval(() => {
             next();
         }, 4000);
 
         return () => clearInterval(interval);
-    }, [index, itemsPerView]);
+    }, []);
 
     const next = () => {
         setIndex((prev) =>
-            prev + itemsPerView >= items.length ? 0 : prev + 1
+            prev + 3 >= items.length ? 0 : prev + 3
         );
     };
 
     const prev = () => {
         setIndex((prev) =>
-            prev === 0 ? items.length - itemsPerView : prev - 1
+            prev === 0
+                ? Math.max(items.length - 3, 0)
+                : prev - 3
         );
     };
 
