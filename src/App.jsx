@@ -1,15 +1,9 @@
 import './App.css';
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-} from "@material-tailwind/react";
-import ServiceCard from "./components/ServiceCard";
-import DepositionsCard from "./components/DepositionsCard";
 import Button from '@mui/material/Button';
 import { motion } from "framer-motion";
+import ServiceCard from "./components/ServiceCard";
+import DepositionsCard from "./components/DepositionsCard";
+import DepositionsCarousel from "./components/DepositionsCarousel";
 
 <motion.div
   initial={{ opacity: 0, y: 30 }}
@@ -29,17 +23,32 @@ const services = [
 const depositions = [
   {
     title: "Fulano da Silva",
-    description: "Gostei dos serviços",
+    description: "Gostei dos serviços, os advogados foram muito atenciosos no meu caso. A advogada fulana não desiste!",
     image: "../cliente1.jpg"
   },
   {
     title: "Siclano de Souza",
-    description: "Gostei dos serviços",
+    description: "Gostei dos serviços, os advogados foram muito atenciosos no meu caso. A advogada fulana não desiste!",
     image: "../cliente1.jpg"
   },
   {
     title: "Beltrano de Morais",
-    description: "Gostei dos serviços",
+    description: "Gostei dos serviços, os advogados foram muito atenciosos no meu caso. A advogada fulana não desiste!",
+    image: "../cliente1.jpg"
+  },
+  {
+    title: "Fulano da Silva",
+    description: "Gostei dos serviços, os advogados foram muito atenciosos no meu caso. A advogada fulana não desiste!",
+    image: "../cliente1.jpg"
+  },
+  {
+    title: "Siclano de Souza",
+    description: "Gostei dos serviços, os advogados foram muito atenciosos no meu caso. A advogada fulana não desiste!",
+    image: "../cliente1.jpg"
+  },
+  {
+    title: "Beltrano de Morais",
+    description: "Gostei dos serviços, os advogados foram muito atenciosos no meu caso. A advogada fulana não desiste!",
     image: "../cliente1.jpg"
   },
 ]
@@ -50,19 +59,19 @@ function App() {
 
   return (
     <>
-      <div className='p-4 bg-[#420a0a] space-y-10 border-2 border-black'>
+      <div className='p-2 bg-[#420a0a] space-y-10 border-2 border-black'>
         {/* Navbar */}
         <section className='flex justify-between p-2 mb-15'>
           <div className='flex flex-col items-center'>
-              <motion.img
-                src="../saas-juridico2.png"
-                className="w-16 md:w-28"
-                whileHover={{ scale: 1.08 }}
-                transition={{ duration: 0.4 }}
-              />
+            <motion.img
+              src="../saas-juridico2.png"
+              className="w-16 md:w-28"
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.4 }}
+            />
             <p>Brandão Guedes</p>
           </div>
-          <div className='flex text-lg md:text-3xl text-black font-bold gap-2 md:gap-5 mt-8 md:mt-20'>
+          <div className='flex text-lg md:text-3xl text-white font-bold gap-2 md:gap-4 mt-8 md:mt-20 md:mr-5'>
             <motion.a
               href="#servicos"
               whileHover={{ scale: 1.1 }}
@@ -90,7 +99,7 @@ function App() {
         </section>
 
         {/* Apresentação */}
-        <section className='flex justify-center items-center px-5 mb-15 gap-5 md:gap-25'>
+        <section className='flex justify-center items-center px-5 mb-15 gap-2 md:gap-10'>
           <div className='flex flex-col space-y-5 flex-1'>
             <div>
               <h2>Precisa de um escritório que cuida do seu caso?</h2>
@@ -108,11 +117,11 @@ function App() {
             <div className="overflow-hidden rounded-xl">
               <motion.img
                 src="../advogada-perfil.jpg"
-                className="w-xs h-65"
+                className="w-md h-65"
                 whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.4 }}
               />
-            </div>            
+            </div>
           </div>
 
         </section>
@@ -120,8 +129,8 @@ function App() {
         {/* Serviços */}
         <section id="servicos" className='space-y-5'>
           <div className='flex justify-center flex-col'>
-            <h2>Nossos serviços</h2>
-            <p>Atuação nas áreas...</p>
+            <h2>Nossas áreas de atuação</h2>
+            <p>Compromisso de defender você em ações de:</p>
           </div>
           <section className="grid grid-cols-3 md:grid-cols-6 gap-3">
             {services.map((service, index) => (
@@ -147,84 +156,80 @@ function App() {
           <h2>Casos que atendemos</h2>
           <div className='flex flex-row justify-center gap-5 md:gap-15'>
             <div>
-              <p className='text-xs'>✓Acompanhamento em Delegacia</p>
-              <p className='text-xs'>✓Habeas Corpus Urgente</p>
-              <p className='text-xs'>✓Acompanhamento em Delegacia</p>
-              <p className='text-xs'>✓Habeas Corpus Urgente</p>
-              <p className='text-xs'>✓Acompanhamento em Delegacia</p>
-              <p className='text-xs'>✓Habeas Corpus Urgente</p>
-              <p className='text-xs'>✓Acompanhamento em Delegacia</p>
-              <p className='text-xs'>✓Habeas Corpus Urgente</p>
+              <p className='text-xs md:text-xl'>✓Acompanhamento em Delegacia</p>
+              <p className='text-xs md:text-xl'>✓Habeas Corpus Urgente</p>
+              <p className='text-xs md:text-xl'>✓Acompanhamento em Delegacia</p>
+              <p className='text-xs md:text-xl'>✓Habeas Corpus Urgente</p>
+              <p className='text-xs md:text-xl'>✓Acompanhamento em Delegacia</p>
+              <p className='text-xs md:text-xl'>✓Habeas Corpus Urgente</p>
+              <p className='text-xs md:text-xl'>✓Acompanhamento em Delegacia</p>
+              <p className='text-xs md:text-xl'>✓Habeas Corpus Urgente</p>
             </div>
             <div>
-              <p className='text-xs'>✓Recursos aos Tribunais Superiores</p>
-              <p className='text-xs'>✓Crimes contra a Honra</p>
-              <p className='text-xs'>✓Recursos aos Tribunais Superiores</p>
-              <p className='text-xs'>✓Crimes contra a Honra</p>
-              <p className='text-xs'>✓Recursos aos Tribunais Superiores</p>
-              <p className='text-xs'>✓Crimes contra a Honra</p>
-              <p className='text-xs'>✓Recursos aos Tribunais Superiores</p>
-              <p className='text-xs'>✓Crimes contra a Honra</p>
+              <p className='text-xs md:text-xl'>✓Recursos aos Tribunais Superiores</p>
+              <p className='text-xs md:text-xl'>✓Crimes contra a Honra</p>
+              <p className='text-xs md:text-xl'>✓Recursos aos Tribunais Superiores</p>
+              <p className='text-xs md:text-xl'>✓Crimes contra a Honra</p>
+              <p className='text-xs md:text-xl'>✓Recursos aos Tribunais Superiores</p>
+              <p className='text-xs md:text-xl'>✓Crimes contra a Honra</p>
+              <p className='text-xs md:text-xl'>✓Recursos aos Tribunais Superiores</p>
+              <p className='text-xs md:text-xl'>✓Crimes contra a Honra</p>
             </div>
           </div>
 
         </section>
 
-        {/* Advogados */}
-        <section id="equipe" className='space-y-5'>
+        <section id="equipe" className="space-y-5">
+          <h2>Conheça nossa equipe</h2>
 
-          <div className='flex justify-around gap-2'>
-            <motion.img
-                src="../advogado.jpg"
-                className="w-[150px] md:w-[350px]"
-                whileHover={{ scale: 1.08 }}
+          <div className="flex md:flex-row gap-4 border p-2 items-center">
+
+            <div className="flex justify-center items-center w-full md:w-1/2">
+              <motion.img
+                src="../advogada.jpg"
+                className="w-[200px] md:w-[350px]"
+                whileHover={{ scale: 1.09 }}
                 transition={{ duration: 0.4 }}
               />
-            <div className='flex flex-col items-center gap-5'>
-              <h2>Doutor Fulano...</h2>
-              <h4>Começou no direito no ano de ...</h4>
-              <Button size="medium" className='w-22 md:w-32' href={whatsappUrl} variant="contained" color="success">Whatsapp</Button>
             </div>
+
+            <div className="flex flex-col justify-center items-center text-center gap-4 w-full md:w-1/2">
+              <h2>Doutora Fulano...</h2>
+              <h4>Cursei Direito na Universidade Federal de Santa Maria e, após formada me dediquei a aprofundar meu conhecimento nos direitos das mulheres: fiz especialização em Direito de Família na PUCRS.</h4>
+              <Button size="medium" href={whatsappUrl} variant="contained" color="success">
+                Whatsapp
+              </Button>
+            </div>
+
           </div>
 
-          <div className='flex justify-around gap-2'>
-            <div className='flex flex-col items-center gap-5'>
-              <h2>Doutora Siclano...</h2>
-              <h4>Começou no direito no ano de ...</h4>
-              <Button size="medium" className='w-22 md:w-32' href={whatsappUrl} variant="contained" color="success">Whatsapp</Button>
-            </div>
-            <motion.img
+          <div className="flex flex-row-reverse gap-4 border p-2 items-center">
+
+            <div className="flex justify-center items-center w-full md:w-1/2">
+              <motion.img
                 src="../advogada.jpg"
-                className="w-[150px] md:w-[350px]"
-                whileHover={{ scale: 1.08 }}
+                className="w-[200px] md:w-[350px]"
+                whileHover={{ scale: 1.09 }}
                 transition={{ duration: 0.4 }}
               />
+            </div>
+
+            <div className="flex flex-col justify-center items-center text-center gap-4 w-full md:w-1/2">
+              <h2>Doutora Siclano...</h2>
+              <h4>Cursei Direito na Universidade Federal de Santa Maria e, após formada me dediquei a aprofundar meu conhecimento nos direitos das mulheres: fiz especialização em Direito de Família na PUCRS.</h4>
+              <Button size="medium" href={whatsappUrl} variant="contained" color="success">
+                Whatsapp
+              </Button>
+            </div>
+
           </div>
         </section>
 
         {/* Opiniões */}
-        <section>
+        <section className='space-y-5'>
           <h2>O que dizem nossos clientes</h2>
-          <section className="flex gap-2 justify-center">
-            {depositions.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2 }}
-              >
-                <DepositionsCard
-                  key={index}
-                  image={service.image}
-                  title={service.title}
-                  description={service.description}
-                />
-              </motion.div>
-            ))}
-          </section>
 
-          {/* Carrossel */}
-
+          <DepositionsCarousel items={depositions} />
 
         </section>
 
